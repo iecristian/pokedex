@@ -1,0 +1,15 @@
+<div class="header" *ngIf="isLoggedIn$ | async as isLoggedIn">
+    <nav class="navbar">
+        
+        <img src="../../assets/img/pokemon-logo-black-transparent.png" class="d-inline-block align-top" alt="" loading="lazy">
+          
+        <h1 class="nav-item navbar-title">Pokedex Yuxi</h1>
+
+        <a routerLink="/" class="nav-link">Busqueda</a>
+
+        <a class="menu-link" (click)="onLogout()">Cerrar Sesión</a>
+        
+      </nav>
+    
+</div>
+

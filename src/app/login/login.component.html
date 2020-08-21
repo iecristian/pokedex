@@ -1,0 +1,35 @@
+<div class="component login">
+    <h1>Pokedex Yuxi</h1>
+    <h2>powered by</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokedexLogo" class="logo-img">
+          </div>
+        
+        <div class="form-group">
+            <label for="email" class="form-label">Usuario  </label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Usuario" required />
+            <div *ngIf="isFieldInvalid('email')">
+                <div *ngIf="f.email.errors.required">El usuario es requerido</div>
+                <div *ngIf="f.email.errors.email">Debe ingresar un email valido</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Contraseña  </label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Contraseña" required />
+            <div *ngIf="isFieldInvalid('password')">
+                La contraseña es requerida
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <button type="button" (click)="goRegistration()" class="btn btn-primary">
+                Registrarse
+            </button>
+            <button class="btn btn-primary">
+                Ingresar
+            </button>
+            <!--<a routerLink="/register" class="btn btn-link">Register</a>-->
+        </div>
+    </form>
+</div>

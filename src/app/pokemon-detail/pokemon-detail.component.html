@@ -1,0 +1,24 @@
+<div class="detail">
+<div class="detail-item">
+    <img src="{{details.sprites.front_default}}">
+</div>
+<div class="detail-item">
+    <p>#Id: {{details.id}}</p>
+</div>
+<div class="detail-item">
+    <p>Nombre: {{details.name}}</p>
+</div>
+<div class="detail-item">
+    <p *ngFor="let typeItem of details.types">
+        Tipo: 
+        {{typeItem.type.name}}
+    </p>
+</div>
+<div class="detail-item"> 
+    <p>Altura: {{details.height}}</p>
+</div>
+<div class="detail-item">
+    <p>Peso: {{details.weight}}</p>
+</div>
+</div>
+
