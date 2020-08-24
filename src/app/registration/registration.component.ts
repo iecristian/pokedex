@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from '../services';
 
 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -23,13 +24,18 @@ export class RegistrationComponent implements OnInit {
     private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
-    this.registrationForm = this.formBuilder.group({
+    /*this.registrationForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       passwordConfirmation: ['']
-  }, { validator: this.checkPasswords });
+  }, { validator: this.checkPasswords });*/
+
+  this.registrationForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
+});
   }
 
   get f() { return this.registrationForm.controls; }
@@ -48,6 +54,7 @@ export class RegistrationComponent implements OnInit {
   const validation = pass === confirmPass ? null : { notSame: true };
   console.log('validation: ', validation);
   return validation;
+  return true;
 }
 
 goLogin(){
