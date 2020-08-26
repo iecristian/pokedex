@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PokemonService } from '../services';
+import { PokemonService, PokemonStoreService } from '../services';
 
 
 
@@ -23,13 +23,15 @@ export class PokemonSearchComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private pokemonStoreService: PokemonStoreService
   ) { }
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
       name: ['', Validators.required]
   });
+    this.pokemonStoreService.loadPokemons();
     this.listPokemon();
     this.hasDetail = false;
   }

@@ -8,3 +8,8 @@ export interface Pokemon {
     //moves: string;
     //evolutionString: string;
 }
+
+export interface Pokemons {
+    list: Pokemon[];
+    selected: string;
+  }
