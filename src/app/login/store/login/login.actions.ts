@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Login } from './login.model';
+import { User } from 'src/app/models';
+
 
 export const loadLogins = createAction(
   '[Login] Load Logins'
@@ -7,17 +8,17 @@ export const loadLogins = createAction(
 
 export const loadLoginsSuccess = createAction(
   '[Login] Load Logins Success',
-  props<{ data: any }>()
+  props<{ Logins: User[] }>()
 );
 
 export const addLogin = createAction(
   '[Login] Add Login',
-  props<{ newLogin: Login }>()
+  props<{ newLogin: User }>()
 );
 
 export const setLogin = createAction(
   '[Login] Set Login',
-  props<{ updatedLogin: Login }>()
+  props<{ updatedLogin: User }>()
 );
 
 export const loadLoginsFailure = createAction(

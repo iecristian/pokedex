@@ -2,8 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services';
-import { LoginService } from './store/login/login.service';
-import { Login } from './store/login/login.model';
+import { LoginStoreService } from '../services/login-store.service';
+import { User } from '../models';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       private formBuilder: FormBuilder,
       private authService: AuthService,
       private router: Router,
-      private loginService: LoginService
+      private loginStoreService: LoginStoreService
   ) {  }
 
 
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
           email: ['', [Validators.required, Validators.email]],
           password: ['', Validators.required]
       });
-      
   }
 
   get f() { return this.loginForm.controls; }
@@ -47,11 +46,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-        const currentLogin: Login = {
+        const currentLogin: User = {
         email: this.loginForm.get('email').value,
         password: this.loginForm.get('password').value
       }
-        this.loginService.addLogin(currentLogin);
+        this.loginStoreService.addLogin(currentLogin);
+        
         this.authService.authenticate(this.loginForm.value);
       }
     this.formSubmitAttempt = true;

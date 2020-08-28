@@ -9,6 +9,13 @@
                 <div *ngIf="f.pokemon.errors.required">El nombre es requerido</div>
             </div>-->
         </div>
+        <div class="form-group">
+            <label for="count" class="form-label"># Registros</label>
+            <input type="text" formControlName="count" class="form-control mini" placeholder="#" />
+            <!--<div *ngIf="isFieldInvalid('pokemon')">
+                <div *ngIf="f.pokemon.errors.required">El nombre es requerido</div>
+            </div>-->
+        </div>
         
         <div class="form-group">
             <button type="button" (click)="searchPokemon()" class="btn btn-primary">
@@ -21,13 +28,30 @@
         </div>
     </form>
 
-    <ul > 
-        <li *ngFor="let pok of results; let i = index">
-
-            <span *ngIf="pok.url" (click)="detailPokemon(pok.url)">{{i}} {{pok.name}}</span>
-            <span *ngIf="!pok.url" (click)="detailPokemonId(pok.id)">{{i}} {{pok.name}}</span>
-        </li>
-      </ul>
+    
+      <table>
+        <thead>
+            <th>#Id</th>
+            <th>Nombre</th>
+            <th>Url</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pok of results; let i = index">
+                <td>
+                   {{i}}
+               
+                </td>
+                <td>
+                    <span *ngIf="pok.url" (click)="detailPokemon(pok.url)">{{pok.name}}</span>
+                    <span *ngIf="!pok.url" (click)="detailPokemonId(pok.id)">{{pok.name}}</span>
+                </td>
+                <td>
+                    <span *ngIf="pok.url" (click)="detailPokemon(pok.url)">{{pok.url}}</span>
+                    <span *ngIf="!pok.url" (click)="detailPokemonId(pok.id)">{{pok.url}}</span>
+                </td>
+            </tr>
+        </tbody>
+      </table>
      
 
 </div>

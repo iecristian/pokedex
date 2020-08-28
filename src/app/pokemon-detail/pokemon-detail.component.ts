@@ -8,9 +8,9 @@ import { PokemonService } from '../services';
   styleUrls: ['./pokemon-detail.component.sass']
 })
 export class PokemonDetailComponent implements OnInit {
-  
   details: any;
   id: number;
+  pokemonImg: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,14 +18,15 @@ export class PokemonDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-
+    this.pokemonImg = '../../assets/img/pokemon-logo-black-transparent.png';
+    this.details = {id:0, name:'pokemon'};
     this.pokemonService.detailPokemon(this.id).subscribe(res => {
       console.log('res: ', res);
       console.log('res.id: ' , res.id);
       this.details = res;
       console.log(this.details);
       console.log(this.details.types);
-     
+      this.pokemonImg = this.details.sprites.front_default;
       
     });
   }

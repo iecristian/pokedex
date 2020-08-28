@@ -28,7 +28,7 @@ export class PokemonService {
 
   listPokemon(limit: number): Observable<any>{
     return this.http.get<any>('https://pokeapi.co/api/v2/pokemon' + '?offset=1&limit=' + limit)
-    .pipe(catchError(this.errorHandler));
+     .pipe(catchError(this.errorHandler));
   }
 
   pokemonInfo(url: string): Observable<any>{
@@ -37,7 +37,7 @@ export class PokemonService {
   }
 
   detailPokemon(id: number): Observable<any>{
-    return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/'+ id)
+    return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
     .pipe(catchError(this.errorHandler));
   }
   

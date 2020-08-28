@@ -2,7 +2,7 @@ export interface Pokemon {
     id: number;
     //image: string;
     name: string;
-    tipo: string;
+    type: string;
     height: number;
     weight: number;
     //moves: string;
@@ -11,5 +11,5 @@ export interface Pokemon {
 
 export interface Pokemons {
     list: Pokemon[];
-    selected: string;
+    selected: Pokemon;
   }

@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
   const validation = pass === confirmPass ? null : { notSame: true };
   console.log('validation: ', validation);
   return validation;
-  return true;
+ //return true;
 }
 
 goLogin(){

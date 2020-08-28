@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PokemonService, PokemonStoreService } from '../services';
+import { Pokemon } from '../models';
+import { Observable } from 'rxjs';
 
 
 
@@ -16,9 +18,12 @@ export class PokemonSearchComponent implements OnInit {
   private formSubmitAttempt: boolean;
   public message: string;
   multipleResults = false;
-  results: any;
+   results: any;
+  //results: Observable<Pokemon[]>;
+  //results: Pokemon[];
   hasDetail = false;
-
+  public pokemonList$: Observable<Pokemon[]>;
+  public pokemonSelected$: Observable<Pokemon>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,9 +34,9 @@ export class PokemonSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      count:['']
   });
-    this.pokemonStoreService.loadPokemons();
     this.listPokemon();
     this.hasDetail = false;
   }
@@ -39,12 +44,14 @@ export class PokemonSearchComponent implements OnInit {
   searchPokemon(){
     console.log(this.searchForm.value.name);
 
+    const records =  this.searchForm.get('count').value;
+    if (records){
+      localStorage.setItem('records', records);
+    }
+
     if (this.searchForm.valid) {
-      console.log('search');
+     
       this.pokemonService.searchPokemon(this.searchForm.value).subscribe(res => {
-        console.log('res: ', res);
-        console.log('res.name: ' + res.name);
-        console.log(typeof(res));
         if (typeof(res) === 'object'){
           this.results = [];
           this.results.push(res);
@@ -52,27 +59,38 @@ export class PokemonSearchComponent implements OnInit {
         }else{
           this.results = res;
         }
-        
       });
     }else{
       console.log('else');
-      this.pokemonService.listPokemon(50).subscribe(res => {
+      let records = JSON.parse(localStorage.getItem('records'));
+      if (!records){
+        records = 50;
+      }
+      this.pokemonService.listPokemon(records).subscribe(res => {
+        console.log('res', res);
         this.results = res.results;
       });
+
+
     }
   }
 
   listPokemon(){
-    console.log('list: ' , this.searchForm.value);
+    /*console.log('list: ' , this.searchForm.value);
+    this.results = this.pokemonStoreService.getPokemonList$();
+    console.log('this.results' + this.results);
+    console.log('this.results[]' + this.results[0]);*/
     
-    this.pokemonService.listPokemon(50).subscribe(res => {
+    let records = JSON.parse(localStorage.getItem('records'));
+    if (!records){
+      records = 1048;
+    }
+    this.pokemonService.listPokemon(records).subscribe(res => {
       this.results = res.results;
       console.log('results: ', this.results);
       });
-    
   }
 
-  
   detailPokemon(url: string){
 
       console.log('url: ', url);
@@ -85,13 +103,11 @@ export class PokemonSearchComponent implements OnInit {
 
         this.results = res.results;
       });
-    
   }
 
   detailPokemonId(id: number){
     this.router.navigate(['/details', id]);
     console.log('id: ', id);
-    
 }
 
 

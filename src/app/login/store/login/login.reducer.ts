@@ -1,11 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as LoginActions from './login.actions';
-import { Login } from './login.model';
+import { User } from '../../../models';
 
 export const loginFeatureKey = 'login';
 
 export interface LoginState {
-  login: Login;
+  login: User;
 }
 
 export const initialState: LoginState = {
