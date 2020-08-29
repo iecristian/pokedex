@@ -1,55 +1,58 @@
+@use '../../vars'
 
 .header
     width: 100%
     min-height: 64px
     max-height: 1000px
-    background-color: #b6c0fb
+    background-color: vars.$mainColor
     top: 0px
     overflow: hidden
 
 .navbar img 
     width: 25%
-    
-
-.navbar-nav-
- 
-
-.nav-item-
-    float: left
-    padding: 14px 16px
-    text-decoration: none
-    font-size: 17px
-
-.menu-item-
-    float: right
-    display: block
-    padding: 14px 16px
-    text-decoration: none
-    font-size: 17px
-
-.menu-link-
-    text-decoration: none
-    cursor: pointer 
+    @media screen and (max-width: vars.$mediumScreen)
+        margin-left: auto
+        margin-right: auto
 
 .navbar
     display: flex
     justify-content: space-between
-    background: #b6c0fb
-    border-bottom: 1px solid #29487d
+    background: vars.$mainColor
+    border: 1px solid vars.$secondaryColor
     height: 100px
+    color: vars.$secondaryColor
 
 
-.navbar a, .navbar h1, .navbar img
+       
+
+
+.navbar a, .navbar img
     flex: 1
     font-family: arial
     display: flex
-    color: #ffffff
+    color: vars.$secondaryColor
     text-decoration: none
-    font-size: 12px
+    font-size: 2em
     font-weight: bold    
     justify-content: center
     align-items: center
     cursor: pointer
+    @media screen and (max-width: vars.$mediumScreen)
+        font-size: 0.7em
+
+.navbar-title
+    flex: 1
+    font-family: arial
+    color: vars.$secondaryColor
+    text-decoration: none
+    font-size: 2em
+    font-weight: bold    
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    @media screen and (max-width: vars.$mediumScreen)
+        display: none
+
 
 
 .navbar a:hover
@@ -57,7 +60,8 @@
 
 
 .navbar a.active
-    background-color: #29487d
+    background-color: vars.$secondaryColor
+    color: white
 
 
 @media (max-width: 768px) 

@@ -1,38 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+
+@use 'vars'
 
  
 
 form
     margin-left: auto
     margin-right: auto
-    background-color: #b6c0fb 
+    background-color: vars.$mainColor
     max-width: 300px
     padding: 5px
+    @media screen and (max-width: vars.$mediumScreen)  
+        max-width: 100%
+       
 
+ 
 .form-group
     max-width: 300px
 
+    @media screen and (max-width: vars.$mediumScreen)  
+        max-width: 100%
+        margin-bottom: 10px
+
 .form-label
-    color: blue
+    color: vars.$secondaryColor
+    font-size: 1.5em
+    @media screen and (max-width: vars.$mediumScreen)  
+        width: 100%
+  
 
 .form-control
-    border: 1px solid blue
+    border: 1px solid vars.$secondaryColor
     margin: 5px
-    padding: 5px
+    padding: 10px
     position: relative
     right: 0
+    border-radius: 5px
+    @media screen and (max-width: vars.$mediumScreen)  
+        width:80%
+        margin-left: auto
+        margin-right: auto
+
+.form-control:focus
+    border: 2px solid vars.$secondaryColor
+
+::placeholder
+    color: vars.$secondaryColor
+    
 
 .btn
     padding: 5px
-
+    font-size: 1em
+    border-radius: 10px
+    border: 1px solid vars.$secondaryColor
+    color: vars.$mainColor
+    background-color: vars.$secondaryColor
+    @media screen and (max-width: vars.$mediumScreen)  
+        width: 80%
+        font-size: 1.5em
+   
 .component
     font-family: Arial, Helvetica, sans-serif
 
-.login
-    background-color: #b6c0fb
+.login, .search
+    background-color: vars.$mainColor
     text-align: center
-
-
+    @media screen and (max-width: vars.$mediumScreen)  
+        width: 100%
+        
+.error-message
+    color: vars.$errorColor
+    margin: 10px
+        
+ 
 
 
 

@@ -27,12 +27,10 @@ export class AuthService {
 
   authenticate(user: User) {
     console.log('user: ', user);
-    
     if (user.email === 'admin@admin.com' && user.password === '12345' ) {
       localStorage.setItem('loggedIn', 'true');
       this.loggedIn.next(true);
       this.router.navigate(['/']);
-      
     }
   }
 

@@ -1,18 +1,33 @@
+@use '../../vars'
 
-    .mini
-        width: 20px 
 
-    table
-        border: 1px solid blue
-        margin-left: auto
-        margin-right: auto
-        margin-top: 10px
+.mini
+    width: 25px 
+
+table
     
-    thead
-         background-color: #b6c0fb 
+    margin-left: auto
+    margin-right: auto
+    margin-top: 10px
 
-    th
-        border: 1px solid blue
+thead
+    background-color: vars.$mainColor
 
-    td
-        border: 1px solid #b6c0fb 
+th
+    color: vars.$secondaryColor
+
+td
+    border: 1px solid vars.$secondaryColor
+    padding: 3px
+
+.pagination
+    margin-left: auto
+    margin-right: auto
+    color: vars.$secondaryColor
+
+.pagination button
+    margin: 5px
+    color: vars.$mainColor
+    background-color: vars.$secondaryColor
+    radius-border: 5px 
+

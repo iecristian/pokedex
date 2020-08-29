@@ -1,24 +1,35 @@
 <div class="detail">
+<div class="detail-name">
+    <p>
+        {{details.name}}
+    </p>
+</div>
 <div class="detail-item">
     <img [src]="pokemonImg">
 </div>
 <div class="detail-item">
-    <p>#Id: {{details.id}}</p>
-</div>
-<div class="detail-item">
-    <p>Nombre: {{details.name}}</p>
+    <p>
+        <strong>#Id:</strong> 
+        {{details.id}}
+    </p>
 </div>
 <div class="detail-item">
     <p *ngFor="let typeItem of details.types">
-        Tipo: 
+        <strong>Tipo:</strong> 
         {{typeItem.type.name}}
     </p>
 </div>
 <div class="detail-item"> 
-    <p>Altura: {{details.height}}</p>
+    <p>
+        <strong>Altura:</strong> 
+        {{details.height}}
+    </p>
 </div>
 <div class="detail-item">
-    <p>Peso: {{details.weight}}</p>
+    <p>
+        <strong>Peso:</strong> 
+        {{details.weight}}
+    </p>
 </div>
 </div>
 

@@ -1,16 +1,27 @@
+@use '../../vars'
 .detail
-    position: relative
-    left: 50%
-    margin-left: -150px
-    background-color: #b6c0fb 
+    margin-left: auto
+    margin-right: auto
+    margin-top: 10px
+    background-color: vars.$mainColor
     max-width: 300px
     padding: 5px
     text-align: center
+    border-radius: 20px
+
+.detail-name
+    font-size: 2em
+    color: vars.$secondaryColor
 
 .detail-item
-    background-color: #b6c0fb 
+    background-color: vars.$mainColor
 
 .detail-item img
-    width: 96px
-    height: 96px
+    width: 180px
+    height: 180px
+    background-color: white
+    border: 2px solid vars.$mainColor
+    border-radius: 20px
 
+    strong
+        color: vars.$secondaryColor
